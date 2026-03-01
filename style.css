@@ -280,6 +280,18 @@ header .cart svg {
     width: 33%;
 }
 
+.btn {
+    display: block;
+    margin: 20px auto;
+    padding: 12px 30px;
+    background: #2874f0;
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 /* footer */
 footer {
     margin-top: 26px;
@@ -288,4 +300,5 @@ footer {
     text-align: center;
     font-size: 14px;
     color: #878787;
+
 }
