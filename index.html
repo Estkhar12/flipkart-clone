@@ -189,23 +189,32 @@
      <button id="payBtn" class="btn">Pay Now</button>
 
     <script>
-        function handlePayment() {
-            const upiId = "estkar123@axl";   // Replace with your UPI ID
-            const name = "AyatStore"; // Replace with your store name
-            const amount = 500;
+  function handlePayment() {
+    const upiId = "estkar123@axl";        // verify this is valid!
+    const name  = "AyatStore";
+    const amount = "500.00";              // use a decimal string
+    const note  = "Test purchase";        // transaction note
+    const ref   = "TXN" + Date.now();     // unique reference
 
-            const url = `upi://pay?pa=${encodeURIComponent(upiId)}&pn=${encodeURIComponent(name)}&am=${amount}&cu=INR`;
+    const params = new URLSearchParams({
+      pa: upiId,
+      pn: name,
+      am: amount,
+      cu: "INR",
+      tn: note,
+      tr: ref
+    });
 
-            window.location.href = url;
-        }
+    const url = `upi://pay?${params.toString()}`;
+    console.log("UPI URI:", url);         // check the output in console
+    window.location.href = url;
+  }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const btn = document.getElementById('payBtn');
-            if (btn) {
-                btn.addEventListener('click', handlePayment);
-            }
-        });
-    </script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.getElementById('payBtn');
+    if (btn) btn.addEventListener('click', handlePayment);
+  });
+</script>
 
     <!-- footer -->
     <footer>
@@ -216,3 +225,4 @@
 
 
 </html>
+
